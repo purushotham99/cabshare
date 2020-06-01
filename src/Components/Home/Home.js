@@ -57,8 +57,8 @@ class Home extends React.Component {
         }
 
         if (this.state.sideDrawerOpen) {
-            sideDrawer = <SideDrawer />;                                              //fine
-            drawerBackdrop = <BackDrop click={this.backDropClickHandler} />;
+            sideDrawer = <SideDrawer />                                              //fine
+            drawerBackdrop = <BackDrop click={this.backDropClickHandler} />
         }
         return (
             <div id="parent-container">
@@ -66,12 +66,12 @@ class Home extends React.Component {
                 <Toolbar id="toolbar" drawerClick={this.drawerToggleClickHandler}></Toolbar>
                 {loginHandler}
                 {sideDrawer}
-                {drawerBackdrop};
+                {drawerBackdrop}
 
 
             </div>
 
-        );
+        )
     }
 }
 

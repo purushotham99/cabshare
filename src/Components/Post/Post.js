@@ -16,8 +16,8 @@ class Post extends React.Component {
 
     updateUser = async () => {
         // alert("source " + this.state.source + " dest " + this.state.dest)
-        // alert('match/' + this.props.Id)
-        let res = await api({ method: 'patch', url: '/match/' + this.props.userId, data: { dest: this.state.dest, source: this.state.source } });
+        // alert('match/' + this.props.Id + " " + this.state.source + " " + this.state.dest)
+        let res = await api({ method: 'patch', url: '/match/' + this.props.Id, data: { source: this.state.source, dest: this.state.dest } });
         console.log(res);
         this.props.stateChanger();
     }

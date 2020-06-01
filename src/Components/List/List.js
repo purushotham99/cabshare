@@ -1,4 +1,5 @@
 import React from 'react'
+import ListElement from '../ListElement/ListElement'
 import axios from 'axios'
 
 const api = axios.create({
@@ -27,7 +28,9 @@ class List extends React.Component {
         return (
             <div>
 
-                {this.state.users.map(user => <h2 key={user.id}>{user.name}</h2>)}
+                {this.state.users.map(user => <ListElement name={user.name} source={user.source} dest={user.dest}></ListElement>
+                    // <h2 key={user._id}>{user.name}+" "+{user.source}+" "+{user.dest}</h2>
+                )}
 
             </div>
         )
