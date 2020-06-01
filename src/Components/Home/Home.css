@@ -1,0 +1,12 @@
+#parent-container{ 
+    background: url('../../images/bluewall.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #toolbar{
+    padding: 2vw;
+    background-color: teal;
+  }

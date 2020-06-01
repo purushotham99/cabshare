@@ -1,0 +1,6 @@
+#post-card{
+    margin: 3vw;
+    padding:2vw;
+    background: linear-gradient(to right, #33cccc 0%, #00ffcc 73%);
+    /* opacity:0.7; */
+}
