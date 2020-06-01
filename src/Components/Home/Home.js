@@ -4,6 +4,7 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import Toolbar from '../Toolbar/Toolbar';
 import Body from '../Body/Body';
 import LoginCard from '../Logincard/LoginCard'
+import cookie from 'react-cookies'
 
 import './Home.css';
 
@@ -15,15 +16,25 @@ class Home extends React.Component {
         uname: null
     }
 
+    componentWillMount() {
+        let cid = cookie.load('userId')
+        if (cid != null) {
+            this.setState({ userId: cid, userLoggedIn: true })
+            alert('you are already logged in')
+        }
+
+    }
+
     drawerToggleClickHandler = () => {
         this.setState((prevState) => {                                                      //drawer toggle
             return { sideDrawerOpen: !prevState.sideDrawerOpen };
         });
     };
 
-    userRetriever = (memail, name) => {
+    userRetriever = (id, name) => {
 
-        this.setState({ userId: memail, uname: name })
+        this.setState({ userId: id, uname: name })
+        cookie.save('userId', id, { path: '/', maxAge: 604800 })
     }
 
     userStatusHandler = () => {
