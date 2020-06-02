@@ -5,6 +5,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Body from '../Body/Body';
 import LoginCard from '../Logincard/LoginCard'
 import cookie from 'react-cookies'
+// import GoogleLogin from 'react-google-login'
 
 import './Home.css';
 
@@ -16,14 +17,14 @@ class Home extends React.Component {
         uname: null
     }
 
-    componentWillMount() {
-        let cid = cookie.load('userId')
-        if (cid != null) {
-            this.setState({ userId: cid, userLoggedIn: true })
-            alert('you are already logged in')
-        }
+    // componentWillMount() {
+    //     let cid = cookie.load('userId')
+    //     if (cid != null) {
+    //         this.setState({ userId: cid, userLoggedIn: true })
+    //         alert('you are already logged in')
+    //     }
 
-    }
+    // }
 
     drawerToggleClickHandler = () => {
         this.setState((prevState) => {                                                      //drawer toggle
