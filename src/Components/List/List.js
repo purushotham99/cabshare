@@ -8,30 +8,26 @@ const api = axios.create({
 
 class List extends React.Component {
     state = {
-        users: []
+        users: [],
+        id: null
     }
 
-    constructor() {
-        super();
+    componentDidMount() {
         try {
-            api.get('/match').then(res => {
+            this.setState({ id: this.props.Id })
+            api.get('/match/result/' + this.props.Id).then(res => {
                 console.log(res.data)
                 this.setState({ users: res.data })
             })
         } catch (Error) {
             console.log("ERROR " + Error);
         };
-
     }
 
     render() {
         return (
             <div>
-
-                {this.state.users.map(user => <ListElement name={user.name} source={user.source} dest={user.dest}></ListElement>
-                    // <h2 key={user._id}>{user.name}+" "+{user.source}+" "+{user.dest}</h2>
-                )}
-
+                {this.state.users.map(user => <ListElement name={user.name} source={user.source} dest={user.dest}></ListElement>)}
             </div>
         )
     }

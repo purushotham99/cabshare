@@ -6,3 +6,15 @@
     margin-left: 7vw;
     margin-right: 7vW;
 }
+
+.source-dest{
+     display: flex ;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.rev-source-dest{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}

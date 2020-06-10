@@ -4,6 +4,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
+
 const api = axios.create({
     baseURL: 'http://localhost:9000'
 })
@@ -18,9 +19,10 @@ class Post extends React.Component {
 
     updateUser = async () => {
 
-        alert(this.state.date)
-        api({ method: 'patch', url: '/match/' + this.props.Id, data: { source: this.state.source, dest: this.state.dest, date: this.state.date.toString() } });
+        alert(this.props.Id + " " + this.state.date)
+        api({ method: 'patch', url: '/match/' + this.props.Id, data: { source: this.state.source, dest: this.state.dest, date: this.state.date } });
         this.props.stateChanger();
+        this.props.dates(this.state.date)
     }
 
     switchClickHandler = () => {
@@ -47,14 +49,15 @@ class Post extends React.Component {
         let source;
         let dest;
 
-        if (this.state.switch) {
-            source = <input type="text" disabled placeholder="VIT" className="col-sm-4 margin-left-right" />
-            dest = <input type="text" placeholder="Destination" className="col-sm-4 margin-left-right" onChange={this.destHandler} />
-        }
-        if (!this.state.switch) {
-            source = <input type="text" placeholder="Source" className="col-sm-4 margin-left-right" onChange={this.sourceHandler} />
-            dest = <input type="text" disabled placeholder="VIT" className="col-sm-4 margin-left-right" />
-        }
+        // if (this.state.switch) {
+        source = <input type="text" disabled placeholder="VIT" className="col-sm-4 margin-left-right" />
+        dest = <input type="text" placeholder="Destination" className="col-sm-4 margin-left-right" onChange={this.destHandler} />
+        // }
+        // if (!this.state.switch) {
+        //     source = <input type="text" placeholder="Source" className="col-sm-4 margin-left-right" onChange={this.sourceHandler} />
+        //     dest = <input type="text" disabled placeholder="VIT" className="col-sm-4 margin-left-right" />
+        // }
+
 
         return (
             <div id="post">
@@ -63,9 +66,13 @@ class Post extends React.Component {
                 <form className="container" align="center">
                     <div className="row margin">
 
-                        {source}
+                        {/* {source} */}
 
-                        {dest}
+                        {/* {dest} */}
+                        <div className={this.state.switch ? 'source-dest' : 'rev-source-dest'} >
+                            {source}
+                            {dest}
+                        </div>
 
                     </div>
 
@@ -84,11 +91,6 @@ class Post extends React.Component {
                         dateFormat="MMMM d, yyyy h:mm aa"
                         placeholderText="Select Date and time of departure"
                     />
-
-                    {/* <div className="margin">
-                        <h3>Date of journey</h3>
-                        <input type="datetime-local" onChange={this.dateHandler} />
-                    </div> */}
 
                     <div className="margin">
                         <input type="button" value="Post" onClick={this.updateUser}></input>
